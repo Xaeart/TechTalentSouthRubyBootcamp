@@ -1,0 +1,33 @@
+<h2>Your Shopping Cart</h2>
+
+<div>
+	<table class ="table">
+		<thead>
+			<tr>
+				<th>Product</th>
+				<th>Unit Price</th>
+				<th>Quantity</th>
+				<th>Total Price</th>
+				<th>Delete Item</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<% @line_items.each do |line_item| %>
+			<tr>
+				<td><%= line_item.product.name %></td>
+				<td><%= number_to_currency(line_item.product.price) %></td>
+				<td><%= line_item.quantity %></td>
+				<td><%= number_to_currency(line_item.line_item_total) %></td>
+				<td><%= link_to "Remove Item", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+<div>
+<% unless @line_items.empty? %>
+	<%= link_to "Proceed to Checkout?", checkout_path, class: "btn btn-success" %>
+<% end %>
+	<%= link_to "Continue Shopping", root_path, class: "btn btn-info" %>
+</div>

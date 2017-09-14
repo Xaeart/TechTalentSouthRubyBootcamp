@@ -1,0 +1,14 @@
+<h3> Thanks for shopping with Tech Talent Store </h3>
+<p> Let's review your order: </p>
+
+<% @order.order_items.each do |key, value| %>
+	<ul>
+		<li>Product: <%= Product.find(key).name %> - QTY: <%= value %></li>
+	</ul>
+<% end %>
+
+<p>
+	<strong>Subtotal: </strong> <%= number_to_currency(@order.subtotal)%>
+	<strong>Sales Tax:</strong> <%= number_to_currency(@order.sales_tax) %>
+	<strong>Order Total:</strong> <%= number_to_currency(@order.grand_total)%>
+</p>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ecommerce</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+    <body>
+    <%= render 'layouts/navbar' %>
+    <% unless flash[:alert].nil? %>
+      <div class="alert alert-danger fade-in"> <%= flash[:alert] %> </div> 
+      <% end %>\
+
+      steelpen83
+      
+      <div class="container">
+        <%= yield %>
+      </div>
+  
+    </body>
+</html>
